@@ -1,200 +1,153 @@
-/* ================================
-   Import reset and base styles
-================================ */
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
 
-/* ==========================
-   Глобальні стилі
-========================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
+/* Reset / common */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f7fb;
+  color: #222;
+  line-height: 1.4;
 }
 
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1280px;
+  margin: 40px auto;
+  padding: 0 16px;
 }
 
-/* ==========================
-   Форма пошуку
-========================== */
+/* ========== FORM ========== */
 .form {
   display: flex;
+  gap: 8px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
-
-.form input[type="text"] {
-  width: 300px;
+.form input {
+  flex: 1;
+  max-width: 420px;
   padding: 10px 12px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  outline: none;
   font-size: 16px;
 }
-
 .form button {
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
-  background-color: #0077ff;
+  background: #4b5cfa;
   color: #fff;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 0 4px 4px 0;
-  transition: background-color 0.3s ease;
 }
+.form button:hover { background: #3a4ce0; }
 
-.form button:hover {
-  background-color: #005fcc;
-}
-
-/* ==========================
-   Галерея
-========================== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 фото в ряд */
-  gap: 16px;
-  list-style: none;
-  margin-bottom: 20px;
-}
-
-.gallery-item {
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-item:hover {
-  transform: scale(1.03);
-}
-
-.gallery-link img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Інформаційна панель під фото */
-.info {
-  padding: 8px;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.info-item {
-  margin: 4px 0;
-}
-
-/* ==========================
-   Лоадер
-========================== */
+/* ========== LOADER ========== */
 .loader-wrapper {
   display: none;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  margin: 20px 0;
 }
-
-.loader-wrapper.is-visible {
-  display: flex;
-}
-
+.loader-wrapper.is-visible { display: flex; }
 .loader {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #0077ff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 5px solid rgba(75,92,250,0.15);
+  border-top-color: #4b5cfa;
   animation: spin 1s linear infinite;
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+/* ========== GALLERY ========== */
+/* IMPORTANT: display:grid is required for columns */
+.gallery {
+  display: grid !important; /* примусово робимо grid */
+  grid-template-columns: repeat(5, 1fr) !important; /* 5 колонок рівної ширини */
+  gap: 16px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* ==========================
-   Кнопка Load More
-========================== */
-.load-more {
-  display: none;
-  margin: 0 auto 40px auto;
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #0077ff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* if some external CSS overrides display, uncomment below for debugging */
+/* .gallery { display: grid !important; } */
+
+.gallery-item {
+  display: flex !important;
+  flex-direction: column !important;
+  width: auto !important;  /* видаляємо фіксовану ширину */
+  height: auto !important; /* видаляємо фіксовану висоту */
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.load-more:hover {
-  background-color: #005fcc;
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.load-more.is-visible {
+.gallery-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
   display: block;
 }
 
-/* ==========================
-   Адаптивність
-========================== */
-@media screen and (max-width: 1400px) {
-  .gallery {
-    grid-template-columns: repeat(4, 1fr); /* 4 фото */
-  }
+
+/* Info panel */
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #eee;
+}
+.info-item {
+  margin: 2px 0;
+  font-size: 12px;
+}
+.info-item b {
+  color: #222;
+  font-weight: 600;
+  margin-right: 4px;
 }
 
-@media screen and (max-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr); /* 3 фото */
-  }
+@media (max-width: 1440px) {
+  .gallery { grid-template-columns: repeat(5, 1fr) !important; }
 }
 
-@media screen and (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 фото */
-  }
-
-  .form input[type="text"] {
-    width: 200px;
-  }
+@media (max-width: 1200px) {
+  .gallery { grid-template-columns: repeat(4, 1fr) !important; }
 }
 
-@media screen and (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr; /* 1 фото */
-  }
+@media (max-width: 992px) {
+  .gallery { grid-template-columns: repeat(3, 1fr) !important; }
+}
 
-  .form {
-    flex-direction: column;
-    align-items: center;
-  }
+@media (max-width: 640px) {
+  .gallery { grid-template-columns: repeat(2, 1fr) !important; }
+}
 
-  .form input[type="text"] {
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 4px;
-  }
-
-  .form button {
-    border-radius: 4px;
-  }
+@media (max-width: 420px) {
+  .gallery { grid-template-columns: 1fr !important; }
 }
