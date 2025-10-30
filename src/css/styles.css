@@ -52,6 +52,27 @@ body {
 .form button:hover { background: #3a4ce0; }
 
 /* ========== LOADER ========== */
+.load-more {
+  display: none; 
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4e75ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.load-more:hover {
+  background-color: #6c8cff;
+}
+
+.load-more.is-visible {
+  display: block;
+}
+
 .loader-wrapper {
   display: none;
   justify-content: center;
