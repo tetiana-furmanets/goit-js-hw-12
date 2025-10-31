@@ -1,27 +1,49 @@
-<script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-<link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-BclIaOog.js">
-<link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-CX4EDM7x.css">
-<main class="container">
-  <form class="form">
-    <label>
-      <input 
-      type="text"
-      name="search-text"
-      placeholder="Search images..." required />
-    </label>
-    <button type="submit">Search</button>
-  </form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixabay Image Search</title>
 
-  <ul class="gallery"></ul>
+    
 
- 
-  <div class="controls">
-    <button class="load-more" type="button">Load more</button>
-  </div>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css" />
+    <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-BclIaOog.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-CX4EDM7x.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-B16plkD1.css">
+  </head>
 
- 
-  <div class="loader-wrapper" aria-hidden="true">
-    <span class="loader"></span>
-  </div>
-</main>
+  <body>
+    <main class="container">
+      
+      <form class="form">
+        <label>
+          <input
+            type="text"
+            name="search-text"
+            placeholder="Search images..."
+            required
+          />
+        </label>
+        <button type="submit">Search</button>
+      </form>
 
+   
+      <ul class="gallery"></ul>
+
+      
+      <div class="controls">
+        <button class="load-more" type="button">Load more</button>
+      </div>
+
+      
+      <div class="loader-wrapper" aria-hidden="true">
+        <span class="loader"></span>
+      </div>
+    </main>
+
+   
+  </body>
+</html>
