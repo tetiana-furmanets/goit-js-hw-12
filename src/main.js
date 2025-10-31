@@ -12,26 +12,26 @@ import {
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const form = document.querySelector('.form');             // Форма пошуку
-const input = form.elements['search-text'];             // Інпут з текстом пошуку
-const loadMoreBtn = document.querySelector('.load-more'); // Кнопка "Load more"
+const form = document.querySelector('.form');             
+const input = form.elements['search-text'];            
+const loadMoreBtn = document.querySelector('.load-more'); 
 
-const PER_PAGE = 15;      // Кількість картинок на сторінку
-let currentPage = 1;       // Поточна сторінка
-let currentQuery = '';     // Поточний запит користувача
-let totalHits = 0;         // Загальна кількість результатів
+const PER_PAGE = 15;      
+let currentPage = 1;      
+let currentQuery = '';     
+let totalHits = 0;        
 
 
 hideLoadMoreButton(); 
 
 
-form.addEventListener('submit', onSearch); // коли користувач натискає "Search"
-if (loadMoreBtn) loadMoreBtn.addEventListener('click', onLoadMore); // кнопка "Load more"
+form.addEventListener('submit', onSearch); 
+if (loadMoreBtn) loadMoreBtn.addEventListener('click', onLoadMore); 
 
 async function onSearch(event) {
-  event.preventDefault(); // відключаємо стандартну відправку форми
+  event.preventDefault(); 
 
-  const query = input.value.trim(); // беремо текст з інпуту без пробілів
+  const query = input.value.trim(); 
   if (!query) {
     iziToast.warning({ title: 'Warning', message: 'Please enter a search query' });
     return;
@@ -87,18 +87,17 @@ async function onSearch(event) {
       message: 'Something went wrong when fetching images. Please try again later.',
     });
   } finally {
-    hideLoader(); // приховуємо лоадер в будь-якому випадку
+    hideLoader(); 
   }
 }
 
 
 async function onLoadMore() {
-  if (!currentQuery) return; // якщо ще не виконано пошук — нічого не робимо
+  if (!currentQuery) return; 
 
-  currentPage += 1; // збільшуємо номер сторінки
-  showLoader();     // показуємо лоадер
-  hideLoadMoreButton(); // ховаємо кнопку під час завантаження
-
+  currentPage += 1; 
+  showLoader();    
+  hideLoadMoreButton();
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
     const { hits } = data;
@@ -112,7 +111,7 @@ async function onLoadMore() {
       return;
     }
 
-    createGallery(hits); // додаємо нові картинки
+    createGallery(hits); 
 
    
     const firstCard = document.querySelector('.gallery .gallery-item');

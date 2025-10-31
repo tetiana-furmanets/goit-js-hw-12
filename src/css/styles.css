@@ -1,15 +1,8 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
+
 @import url('./reset.css');
 @import url('./base.css');
 
 
-/* Reset / common */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -26,7 +19,7 @@ body {
   padding: 0 16px;
 }
 
-/* ========== FORM ========== */
+
 .form {
   display: flex;
   gap: 8px;
@@ -51,7 +44,6 @@ body {
 }
 .form button:hover { background: #3a4ce0; }
 
-/* ========== LOADER ========== */
 .load-more {
   display: none; 
   margin: 20px auto;
@@ -88,26 +80,22 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ========== GALLERY ========== */
-/* IMPORTANT: display:grid is required for columns */
 .gallery {
-  display: grid !important; /* примусово робимо grid */
-  grid-template-columns: repeat(5, 1fr) !important; /* 5 колонок рівної ширини */
-  gap: 16px !important;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr) !important; 
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* if some external CSS overrides display, uncomment below for debugging */
-/* .gallery { display: grid !important; } */
+
 
 .gallery-item {
-  display: flex !important;
-  flex-direction: column !important;
-  width: auto !important;  /* видаляємо фіксовану ширину */
-  height: auto !important; /* видаляємо фіксовану висоту */
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: auto;  
+  height: auto; 
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -133,7 +121,7 @@ body {
 }
 
 
-/* Info panel */
+
 .info {
   display: flex;
   justify-content: space-between;
@@ -154,21 +142,21 @@ body {
 }
 
 @media (max-width: 1440px) {
-  .gallery { grid-template-columns: repeat(5, 1fr) !important; }
+  .gallery { grid-template-columns: repeat(5, 1fr); }
 }
 
 @media (max-width: 1200px) {
-  .gallery { grid-template-columns: repeat(4, 1fr) !important; }
+  .gallery { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 992px) {
-  .gallery { grid-template-columns: repeat(3, 1fr) !important; }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
-  .gallery { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 420px) {
-  .gallery { grid-template-columns: 1fr !important; }
+  .gallery { grid-template-columns: 1fr; }
 }
